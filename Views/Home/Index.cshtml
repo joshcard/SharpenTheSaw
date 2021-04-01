@@ -3,12 +3,45 @@
 }
 @model IndexViewModel  
 
-@foreach (var x in Model.Bowlers)
-{
-    <p>@x.BowlerFirstName</p>
-}
+<!--Index view with ViewBag.SelectedTeam used to display which team was selected-->
+<h2 class="text-center">@ViewBag.SelectedTeam</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var x in Model.Bowlers)
+        {
+        <tr>
+            <td>@x.BowlerFirstName</td>
+            <td>@x.BowlerMiddleInit</td>
+            <td>@x.BowlerLastName</td>
+            <td>@x.BowlerAddress</td>
+            <td>@x.BowlerCity</td>
+            <td>@x.BowlerState</td>
+            <td>@x.BowlerZip</td>
+            <td>@x.BowlerPhoneNumber</td>
+        </tr>
+        }
+    </tbody>
+</table>
 
+<!--div for pagination-->
 <div page-info="@Model.PageNumberingInfo"
-     page-url-teamName="@Model.TeamCategory">
-
+     page-url-teamName="@Model.TeamCategory"
+     page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary"
+     class="btn-group pull-right m-1">
 </div>

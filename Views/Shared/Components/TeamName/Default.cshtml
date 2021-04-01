@@ -1,13 +1,17 @@
 ﻿@model IEnumerable<Teams>
 
-<a asp-action="Index" asp-controller="Home" asp-route-teamId="">Home</a>
+<!--defaul view for the view TeamNameViewComponent. This gets added to the _Layout.cshtml -->
+<a class="btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-teamId="">Home</a>
 <br />
 
 
-@foreach (var x in Model)
+@foreach (var team in Model)
 {
+    <!--displays all of the teams and has the ViewBag to highlight the selected team-->
     <a asp-action="Index" asp-controller="Home" 
-       asp-route-teamId="@x.TeamId"
-       asp-route-teamName="@x.TeamName">@x.TeamName</a>
+       asp-route-teamId="@team.TeamId"
+       asp-route-teamName="@team.TeamName"
+       class="btn btn-block @(team.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-secondary")"
+       >@team.TeamName</a>
     <br />
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace SharpenTheSaw.Models.ViewModels
 {
+    //ViewModel for pagination. Gives the necessary paging info to the view
     public class PageNumberingInfo
     {
         public int NumItemsPerPage { get; set; }

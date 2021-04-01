@@ -23,12 +23,18 @@ namespace SharpenTheSaw.Controllers
             _context = ctx;
         }
 
+        //Index Action
         public IActionResult Index(long? teamId, string teamName, int pageNum = 0)
         {
             int pageSize = 5;
 
+            //Assign value to ViewBag.SelectedTeam to display the selected team name
+            ViewBag.SelectedTeam = RouteData?.Values["TeamName"];
+
+            
             return View(new IndexViewModel
             {
+                //partial view of the IndexViewModel to send to the index view
                 Bowlers = (_context.Bowlers
                     .Where(t => t.TeamId == teamId || teamId == null)
                     .OrderBy(p => p.BowlerFirstName)

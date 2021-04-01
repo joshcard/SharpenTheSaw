@@ -27,6 +27,7 @@ namespace SharpenTheSaw
         {
             services.AddControllersWithViews();
 
+            //Adding the DbContext calling the connection string and specifying the DBMS being used (sqlite)
             services.AddDbContext<BowlingLeagueContext>(options =>
             {
                 options.UseSqlite(Configuration["ConnectionStrings:BowlingLeagueDbConnection"]);
@@ -55,14 +56,17 @@ namespace SharpenTheSaw
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoint for receiving team name, id, and page number
                 endpoints.MapControllerRoute("teamnamepagenum",
                     "TeamName/{teamId}/{teamName}/{pagenum}",
                     new { Controller = "Home", action = "Index" });
 
+                //endpoint for just receiving team info
                 endpoints.MapControllerRoute("teamId",
                     "Team/{teamId}/{teamName}",
                     new {Controller = "Home", action = "Index", pagenum = 1});
 
+                //endpoint for just receiving page info
                 endpoints.MapControllerRoute("pagenum",
                     "All/{pagenum}",
                     new { Controller = "Home", action = "Index" });

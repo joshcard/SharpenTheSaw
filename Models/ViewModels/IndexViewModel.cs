@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace SharpenTheSaw.Models.ViewModels
 {
+    //ViewModel for the index page
     public class IndexViewModel
     {
         public List<Bowlers> Bowlers { get; set; }
