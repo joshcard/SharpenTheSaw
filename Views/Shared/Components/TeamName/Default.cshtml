@@ -11,6 +11,7 @@
     <a asp-action="Index" asp-controller="Home" 
        asp-route-teamId="@team.TeamId"
        asp-route-teamName="@team.TeamName"
+       asp-route-pagenum="1"
        class="btn btn-block @(team.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-secondary")"
        >@team.TeamName</a>
     <br />
